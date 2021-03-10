@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Create Lesson</legend>
+                 <div class="form-group">
+
+                <div class="form-group">
+                    {{ form.date_for_lesson.label(class="form-control-label") }}
+
+                    {% if form.date_for_lesson.errors %}
+                        {{ form.date_for_lesson(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.date_for_lesson.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.date_for_lesson(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                    <div class="form-group">
+                    {{ form.time_for_lesson.label(class="form-control-label") }}
+
+                    {% if form.time_for_lesson.errors %}
+                        {{ form.time_for_lesson(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.time_for_lesson.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.time_for_lesson(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                 <div class="form-group">
+                    {{ form.lesson_type.label(class="form-control-label") }}
+
+                    {% if form.lesson_type.errors %}
+                        {{ form.lesson_type(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.lesson_type.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.lesson_type(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            </fieldset>
+
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+        </small>
+    </div>
+    <!-- TODO: make sure that you update this page if your user registration changes -->
+{% endblock content %}

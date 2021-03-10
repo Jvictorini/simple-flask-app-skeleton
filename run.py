@@ -1,6 +1,6 @@
 import argparse
 from load_database import reload_database
-from flasksite import app
+from surflesson import app
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

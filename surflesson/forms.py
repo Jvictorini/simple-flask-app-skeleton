@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, RadioField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, RadioField, SelectField, DateField, DateTimeField, TimeField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from flasksite.models import User
+from surflesson.models import User, LessonType, Lesson, Message
 
 
 class RegistrationForm(FlaskForm):
@@ -57,3 +57,16 @@ class UpdateAccountForm(FlaskForm):
 
 
 # TODO: create here your forms
+class CreateLessonForm(FlaskForm):
+    # date_for_lesson = StringField('Date',
+    #                        validators=[DataRequired(), Length(min=2, max=20)])
+    date_for_lesson = DateField('Date',
+                                  validators=[DataRequired()])
+    time_for_lesson = StringField('Time',
+                                    validators=[DataRequired()])
+    lesson_type = SelectField('Type of lesson',
+                                choices=[],
+                                coerce=int,
+                                validators=[DataRequired()])
+    submit = SubmitField('Create lesson')
+
